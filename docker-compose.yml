@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  nats:
+    image: nats:alpine3.17
+    volumes:
+      - ./nats/config.conf:/nats-server/nats.conf
+    command: "-c /nats-server/nats.conf"
+    ports:
+      - "8222:8222"
+      - "4222:4222"
+    networks:
+      - nats
+  nats-box:
+    image: natsio/nats-box
+    networks:
+      - nats
+    tty: true
+networks:
+  nats: { }
