@@ -4,7 +4,7 @@ services:
     image: nats:alpine3.17
     volumes:
       - ./nats/config.conf:/nats-server/nats.conf
-    command: "-c /nats-server/nats.conf"
+    command: "-c /nats-server/nats.conf -m 8222"
     ports:
       - "8222:8222"
       - "4222:4222"
